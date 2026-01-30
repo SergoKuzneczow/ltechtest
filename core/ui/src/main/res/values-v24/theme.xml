@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Theme.V24.Ltechtest" parent="Theme.Material3.Light.NoActionBar">
+
+        <!-- Colors -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!--        <item name="colorPrimaryContainer">@color/primaryContainer</item>-->
+        <!--        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>-->
+        <!--        <item name="colorSecondary">@color/secondary</item>-->
+        <!--        <item name="colorOnSecondary">@color/onSecondary</item>-->
+        <!--        <item name="colorSecondaryContainer">@color/secondaryContainer</item>-->
+        <!--        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>-->
+        <!--        <item name="colorTertiary">@color/tertiary</item>-->
+        <!--        <item name="colorOnTertiary">@color/onTertiary</item>-->
+        <!--        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>-->
+        <!--        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>-->
+        <!--        <item name="colorError">@color/error</item>-->
+        <!--        <item name="colorOnError">@color/onError</item>-->
+        <!--        <item name="colorErrorContainer">@color/errorContainer</item>-->
+        <!--        <item name="colorOnErrorContainer">@color/onErrorContainer</item>-->
+        <!--        <item name="android:colorBackground">@color/background</item>-->
+        <!--        <item name="colorOnBackground">@color/onBackground</item>-->
+        <!--        <item name="colorSurface">@color/surface</item>-->
+        <!--        <item name="colorOnSurface">@color/onSurface</item>-->
+        <!--        <item name="colorSurfaceVariant">@color/surfaceVariant</item>-->
+        <!--        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>-->
+        <!--        <item name="colorSurfaceContainer">@color/surfaceContainer</item>-->
+        <!--        <item name="colorOutline">@color/outline</item>-->
+
+        <!-- Style attributes -->
+        <item name="android:textViewStyle">@style/LtechtestWidget.TextView</item>
+        <item name="textInputStyle">@style/LtechtestWidget.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/LtechtestWidget.Button</item>
+
+        <!-- Params -->
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Base.Theme.Ltechtest" parent="Base.Theme.V24.Ltechtest" />
+
+    <style name="Theme.Ltechtest" parent="Base.Theme.Ltechtest" />
+</resources>
