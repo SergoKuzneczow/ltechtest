@@ -22,3 +22,7 @@ dependencyResolutionManagement {
 rootProject.name = "ltechtest"
 include(":app")
 include(":core:network")
+include(":feature:authorization")
+include(":core:model")
+include(":core:navigator")
+include(":core:ui")

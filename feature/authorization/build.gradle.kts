@@ -1,27 +1,23 @@
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.google.dagger.hilt.android)
     alias(libs.plugins.navigation.component.safeargs)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.sergokuzneczow.ltechtest"
+    namespace = "com.sergokuzneczow.authorization"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.sergokuzneczow.ltechtest"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -43,8 +39,6 @@ kotlin {
 dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:network"))
-    implementation(project(":core:navigator"))
-    implementation(project(":feature:authorization"))
     //Material
     implementation(libs.material)
     //Android
