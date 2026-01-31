@@ -4,6 +4,8 @@
     <string name="enter_in_account">Вход в аккаунт</string>
     <string name="title_input_phone">Телефон</string>
     <string name="title_input_password">Пароль</string>
+    <string name="error_input_phone">Неверный телефонный номер</string>
+    <string name="error_input_password">Неверный пароль</string>
     <string name="hint_input_phone">Введите телефон</string>
     <string name="hint_input_password">Введите пароль</string>
     <string name="log_in">Войти</string>

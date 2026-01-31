@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_authorization_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".AuthorizationFragment">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cpb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="visible" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/success_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <Space
             android:layout_width="match_parent"
@@ -61,17 +71,28 @@
                 android:id="@+id/til_enter_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                app:expandedHintEnabled="false"
                 tools:ignore="TouchTargetSizeCheck">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_til_enter_phone_number"
+                    android:id="@+id/et_enter_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_input_phone"
                     android:inputType="phone"
                     android:lines="1"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_error_text_field_for_phone_number"
+                style="@style/LtechtestTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/error_input_password"
+                android:textColor="@color/red"
+                android:visibility="gone" />
 
             <Space
                 android:layout_width="match_parent"
@@ -93,10 +114,11 @@
                 android:id="@+id/til_enter_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
                 tools:ignore="TouchTargetSizeCheck">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_til_enter_password"
+                    android:id="@+id/et_enter_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_input_password"
@@ -104,6 +126,20 @@
                     android:lines="1"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_small" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_error_text_field_for_password"
+                style="@style/LtechtestTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/error_input_password"
+                android:textColor="@color/red"
+                android:visibility="gone" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <Space

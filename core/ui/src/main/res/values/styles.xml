@@ -15,6 +15,7 @@
         <item name="boxCornerRadiusTopEnd">14dp</item>
         <item name="boxCornerRadiusTopStart">14dp</item>
         <item name="boxBackgroundMode">outline</item>
+        <item name="passwordToggleDrawable">@drawable/selector_password_toggle</item>
     </style>
 
     <style name="LtechtestWidget.Button" parent="Widget.MaterialComponents.Button">

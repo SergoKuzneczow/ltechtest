@@ -43,8 +43,10 @@ kotlin {
 dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:network"))
+    implementation(project(":core:database"))
     implementation(project(":core:navigator"))
     implementation(project(":feature:authorization"))
+    implementation(project(":feature:home"))
     //Material
     implementation(libs.material)
     //Android

@@ -12,14 +12,12 @@ android {
     compileSdk {
         version = release(36)
     }
-
     defaultConfig {
         minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -30,6 +28,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 kotlin {
@@ -38,7 +39,11 @@ kotlin {
 
 dependencies {
     implementation(project(":core:ui"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:model"))
+    implementation(project(":core:navigator"))
     implementation(project(":core:network"))
+    implementation(project(":core:database"))
     //Material
     implementation(libs.material)
     //Android
@@ -58,4 +63,7 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.navigation.dynamic.features)
+    //Orbit
+    implementation(libs.orbit.core)
+    testImplementation(libs.orbit.test)
 }

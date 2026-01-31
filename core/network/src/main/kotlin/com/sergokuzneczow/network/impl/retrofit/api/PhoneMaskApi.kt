@@ -1,4 +1,4 @@
-package com.sergokuzneczow.network.impl.retrofit
+package com.sergokuzneczow.network.impl.retrofit.api
 
 import com.sergokuzneczow.network.impl.models.PhoneMaskRemoteModel
 import retrofit2.http.GET

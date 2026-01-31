@@ -7,8 +7,13 @@
     tools:ignore="InvalidNavigation">
 
     <include app:graph="@navigation/graph_feature_authorization" />
+    <include app:graph="@navigation/graph_feature_home" />
 
     <action
         android:id="@+id/action_to_feature_authorization"
         app:destination="@+id/graph_feature_authorization" />
+
+    <action
+        android:id="@+id/action_to_feature_home"
+        app:destination="@+id/graph_feature_home" />
 </navigation>
