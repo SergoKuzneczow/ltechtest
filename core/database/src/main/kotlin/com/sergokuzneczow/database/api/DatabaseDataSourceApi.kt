@@ -15,5 +15,7 @@ public interface DatabaseDataSourceApi {
 
     public fun getPostsBySorting(sorting: Sorting): Flow<List<Post>>
 
+    public fun getPostsByKey(key: String): Flow<List<Post>>
+
     public suspend fun setPosts(posts: List<Post>)
 }

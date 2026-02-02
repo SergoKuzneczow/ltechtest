@@ -8,6 +8,7 @@
 
     <include app:graph="@navigation/graph_feature_authorization" />
     <include app:graph="@navigation/graph_feature_home" />
+    <include app:graph="@navigation/graph_feature_details" />
 
     <action
         android:id="@+id/action_to_feature_authorization"
@@ -24,5 +25,14 @@
             android:name="sorting"
             android:defaultValue="DEFAULT"
             app:argType="com.sergokuzneczow.model.Sorting" />
+    </action>
+
+    <action
+        android:id="@+id/action_to_feature_details"
+        app:destination="@+id/graph_feature_details">
+        <argument
+            android:name="postKey"
+            app:argType="string"
+            android:defaultValue="033efe01-be68-486d-9f99-7b956aa07730" />
     </action>
 </navigation>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="12dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/details_top_app_bar"
+            app:navigationIcon="@drawable/icon_back_arrow" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/container_progress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/cpb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/container_post"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/padding_large"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/gradient_bottom_shadow" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_post_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date preview"
+                android:textAppearance="@style/LtechtestTextAppearance.Body2" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_medium" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_post_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title preview"
+                android:textAppearance="@style/LtechtestTextAppearance.Headline3" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <ImageView
+                android:id="@+id/iv_post_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/post_preview_description"
+                android:scaleType="fitCenter" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_post_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title preview"
+                android:textAppearance="@style/LtechtestTextAppearance.Body1" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

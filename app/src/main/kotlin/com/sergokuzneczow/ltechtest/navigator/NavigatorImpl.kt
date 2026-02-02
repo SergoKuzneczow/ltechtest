@@ -8,8 +8,18 @@ import com.sergokuzneczow.navigator.NavigatorApi
 import jakarta.inject.Inject
 
 internal class NavigatorImpl @Inject constructor() : NavigatorApi {
+
+    override fun popBackStack(navController: NavController) {
+        navController.popBackStack()
+    }
+
     override fun toHome(navController: NavController, sorting: Sorting) {
         val action: NavDirections = GraphMainDirections.actionToFeatureHome(sorting)
+        navController.navigate(action)
+    }
+
+    override fun toDetails(navController: NavController, postKey: String) {
+        val action = GraphMainDirections.actionToFeatureDetails(postKey)
         navController.navigate(action)
     }
 }

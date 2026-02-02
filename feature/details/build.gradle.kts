@@ -1,27 +1,23 @@
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.google.dagger.hilt.android)
     alias(libs.plugins.navigation.component.safeargs)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.sergokuzneczow.ltechtest"
+    namespace = "com.sergokuzneczow.details"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.sergokuzneczow.ltechtest"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -34,6 +30,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 kotlin {
@@ -42,14 +41,11 @@ kotlin {
 
 dependencies {
     implementation(project(":core:ui"))
+    implementation(project(":core:domain"))
     implementation(project(":core:model"))
     implementation(project(":core:network"))
     implementation(project(":core:database"))
-    implementation(project(":core:domain"))
     implementation(project(":core:navigator"))
-    implementation(project(":feature:authorization"))
-    implementation(project(":feature:home"))
-    implementation(project(":feature:details"))
     //Material
     implementation(libs.material)
     //Android
@@ -69,4 +65,10 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.navigation.dynamic.features)
+    //Orbit
+    implementation(libs.orbit.core)
+    testImplementation(libs.orbit.test)
+    //Coil
+    implementation(libs.coil)
+    implementation(libs.coil.network.okhttp)
 }

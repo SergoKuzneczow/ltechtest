@@ -38,6 +38,8 @@ public class DatabaseDataSourceImpl private constructor(
         }
     }
 
+    override fun getPostsByKey(key: String): Flow<List<Post>> = postsDao.queryPostsByKey(key).map { it.asListPosts }
+
     override suspend fun setPosts(posts: List<Post>) {
         postsDao.insertOrReplacePosts(posts.asListPostLocalModel)
     }

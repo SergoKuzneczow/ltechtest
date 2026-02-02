@@ -1,0 +1,7 @@
+<resources>
+    <string name="item_menu_description_favorites">Favorites item</string>
+    <string name="item_menu_favorites">Favorites</string>
+    <string name="item_menu_description_share">Share item</string>
+    <string name="item_menu_share">Share</string>
+    <string name="post_preview_description">Post preview description</string>
+</resources>

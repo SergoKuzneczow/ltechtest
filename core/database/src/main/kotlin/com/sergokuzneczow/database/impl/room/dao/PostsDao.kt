@@ -19,6 +19,9 @@ internal interface PostsDao {
     @Query("select * from posts order by date asc")
     fun queryPostsByDate(): Flow<List<PostLocalModel>>
 
+    @Query("select * from posts where `key`=:key")
+    fun queryPostsByKey(key: String): Flow<List<PostLocalModel>>
+
     @Query("select * from posts order by sort asc")
     fun queryPostsByServerSort(): Flow<List<PostLocalModel>>
 }
