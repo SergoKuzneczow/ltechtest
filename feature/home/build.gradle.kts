@@ -30,6 +30,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 kotlin {
@@ -42,6 +45,7 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:network"))
     implementation(project(":core:database"))
+    implementation(project(":core:navigator"))
     //Material
     implementation(libs.material)
     //Android
@@ -64,4 +68,7 @@ dependencies {
     //Orbit
     implementation(libs.orbit.core)
     testImplementation(libs.orbit.test)
+    //Coil
+    implementation(libs.coil)
+    implementation(libs.coil.network.okhttp)
 }

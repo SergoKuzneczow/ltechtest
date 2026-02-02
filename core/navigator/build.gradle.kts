@@ -37,6 +37,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":core:model"))
     //Kotlin
     implementation(libs.kotlinx.serialization.json)
     //Hilt

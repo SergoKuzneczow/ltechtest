@@ -11,9 +11,18 @@
 
     <action
         android:id="@+id/action_to_feature_authorization"
-        app:destination="@+id/graph_feature_authorization" />
+        app:destination="@+id/graph_feature_authorization"
+        app:popUpTo="@id/graph_feature_authorization"
+        app:popUpToInclusive="true" />
 
     <action
         android:id="@+id/action_to_feature_home"
-        app:destination="@+id/graph_feature_home" />
+        app:destination="@+id/graph_feature_home"
+        app:popUpTo="@id/graph_feature_authorization"
+        app:popUpToInclusive="true">
+        <argument
+            android:name="sorting"
+            android:defaultValue="DEFAULT"
+            app:argType="com.sergokuzneczow.model.Sorting" />
+    </action>
 </navigation>

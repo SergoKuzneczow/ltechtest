@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="24dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/padding_large"
+            android:text="@string/modal_bottom_sheet_title"
+            android:textAppearance="@style/LtechtestTextAppearance.Headline3" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="@dimen/padding_medium" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/sorting_default">
+
+            <RadioButton
+                android:id="@+id/sorting_default"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/padding_large"
+                android:layoutDirection="rtl"
+                android:text="@string/radio_sorting_default"
+                android:textAppearance="@style/LtechtestTextAppearance.Body1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray" />
+
+            <RadioButton
+                android:id="@+id/sorting_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/padding_large"
+                android:layoutDirection="rtl"
+                android:text="@string/radio_sorting_date"
+                android:textAppearance="@style/LtechtestTextAppearance.Body1" />
+        </RadioGroup>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="24dp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

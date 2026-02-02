@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 internal class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
@@ -52,12 +53,11 @@ internal class AuthorizationFragment : Fragment(R.layout.fragment_authorization)
                     binding.successContainer.visibility = View.VISIBLE
 
                     binding.tilEnterPhoneNumber.prefixText = state.phoneMaskPrefix
-
                     binding.etEnterPhoneNumber.filters = arrayOf(InputFilter.LengthFilter(state.phoneMaskBody.length))
                     binding.etEnterPhoneNumber.hint = state.phoneMaskBody
-                    binding.etEnterPhoneNumber.setText(state.phoneInputBody)
+                    if (binding.etEnterPhoneNumber.text.toString() != state.phoneInputBody) binding.etEnterPhoneNumber.setText(state.phoneInputBody)
 
-                    binding.etEnterPassword.setText(state.passwordInputBody)
+                    if (binding.etEnterPassword.text.toString() != state.passwordInputBody)  binding.etEnterPassword.setText(state.passwordInputBody)
                     if (state.passwordErrorMessage == null) {
                         binding.tvErrorTextFieldForPassword.visibility = View.GONE
                         binding.tilEnterPassword.boxStrokeColor = resources.getColor(com.sergokuzneczow.ui.R.color.gray, requireContext().theme)
@@ -68,17 +68,27 @@ internal class AuthorizationFragment : Fragment(R.layout.fragment_authorization)
                 }
             }
         }.launchWhenLifecycleStateStarted()
-
+        
         binding.etEnterPhoneNumber.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(editable: Editable?) {
-                Selection.setSelection(editable, editable?.length ?: 0)
-            }
+            private var cursorPositionBefore: Int = 0
+            private var lastTextLength: Int = 0
+            private var newTextLength: Int = 0
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                cursorPositionBefore = binding.etEnterPhoneNumber.selectionStart
+                lastTextLength = s?.length ?: 0
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                newTextLength = s?.length ?: 0
                 s?.let { vm.dispatch(AuthorizationFragmentIntent.ChangePhoneTextField(it.toString())) }
+            }
+
+            override fun afterTextChanged(editable: Editable?) {
+                val newPosition = (cursorPositionBefore + (newTextLength - lastTextLength)).coerceAtMost(editable?.length ?: 0)
+                if (newPosition <= (editable?.length ?: 0)) {
+                    binding.etEnterPhoneNumber.setSelection(newPosition)
+                }
             }
         })
 

@@ -2,12 +2,15 @@ package com.sergokuzneczow.network.impl
 
 import com.sergokuzneczow.model.AuthResponse
 import com.sergokuzneczow.model.PhoneMask
+import com.sergokuzneczow.model.Post
 import com.sergokuzneczow.network.api.NetworkDataSourceApi
 import com.sergokuzneczow.network.impl.models.AuthResponseRemoteModel
+import com.sergokuzneczow.network.impl.models.asListPosts
 import com.sergokuzneczow.network.impl.models.asPhoneMask
 import com.sergokuzneczow.network.impl.retrofit.RetrofitHandler
 import com.sergokuzneczow.network.impl.retrofit.api.AuthResponseApi
 import com.sergokuzneczow.network.impl.retrofit.api.PhoneMaskApi
+import com.sergokuzneczow.network.impl.retrofit.api.PostsApi
 import jakarta.inject.Inject
 import retrofit2.HttpException
 import retrofit2.Response
@@ -15,10 +18,11 @@ import retrofit2.Response
 public class NetworkDataSourceImpl private constructor(
     private val phoneMaskApi: PhoneMaskApi,
     private val authResponseApi: AuthResponseApi,
+    private val postsApi: PostsApi,
 ) : NetworkDataSourceApi {
 
     @Inject
-    internal constructor(retrofitHandler: RetrofitHandler) : this(retrofitHandler.phoneMaskApi, retrofitHandler.authResponseApi)
+    internal constructor(retrofitHandler: RetrofitHandler) : this(retrofitHandler.phoneMaskApi, retrofitHandler.authResponseApi, retrofitHandler.postsApi)
 
     override suspend fun getPhoneMasks(): PhoneMask = phoneMaskApi.getPhoneMask().asPhoneMask
 
@@ -67,4 +71,6 @@ public class NetworkDataSourceImpl private constructor(
             )
         }
     }
+
+    override suspend fun getPosts(): List<Post> = postsApi.getPosts().asListPosts
 }

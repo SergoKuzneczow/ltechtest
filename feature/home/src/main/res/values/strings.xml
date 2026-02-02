@@ -1,4 +1,9 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="item_menu_description_update">Update</string>
+    <string name="item_menu_update">Update</string>
+    <string name="modal_bottom_sheet_title">Сортировка</string>
+    <string name="radio_sorting_default">По умолчанию</string>
+    <string name="radio_sorting_date">По дате</string>
 </resources>

@@ -10,12 +10,12 @@ import com.sergokuzneczow.model.AuthenticateRequest
 )
 internal data class AuthenticateRequestLocalModel(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "authenticate_requests_key") val key: Int = -1,
-    @ColumnInfo(name = "phone_mask")  val phoneMask: String,
-    @ColumnInfo(name = "phone_mask_prefix")   val phoneMaskPrefix: String,
-    @ColumnInfo(name = "phone_mask_body")   val phoneMaskBody: String,
-    @ColumnInfo(name = "phone_body")   val phoneBody: String,
-    @ColumnInfo(name = "password")  val password: String,
+    @ColumnInfo(name = "authenticate_requests_key") val key: Int? = null,
+    @ColumnInfo(name = "phone_mask") val phoneMask: String,
+    @ColumnInfo(name = "phone_mask_prefix") val phoneMaskPrefix: String,
+    @ColumnInfo(name = "phone_mask_body") val phoneMaskBody: String,
+    @ColumnInfo(name = "phone_body") val phoneBody: String,
+    @ColumnInfo(name = "password") val password: String,
 )
 
 internal val AuthenticateRequest.asAuthenticateRequestLocalModel: AuthenticateRequestLocalModel

@@ -5,9 +5,35 @@
     android:id="@+id/graph_feature_home"
     app:startDestination="@id/homeFragment">
 
+    <argument
+        android:name="sorting"
+        android:defaultValue="DEFAULT"
+        app:argType="com.sergokuzneczow.model.Sorting" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.sergokuzneczow.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="sorting"
+            android:defaultValue="DEFAULT"
+            app:argType="com.sergokuzneczow.model.Sorting" />
+        <action
+            android:id="@+id/action_homeFragment_to_modalBottomSheet"
+            app:destination="@id/modalBottomSheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/modalBottomSheet"
+        android:name="com.sergokuzneczow.home.ui.ModalBottomSheet"
+        android:label="ModalBottomSheet" >
+        <argument
+            android:name="selectedSorting"
+            app:argType="com.sergokuzneczow.model.Sorting" />
+        <action
+            android:id="@+id/action_modalBottomSheet_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
 </navigation>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Base.Theme.V24.Ltechtest" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.V24.Ltechtest" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!-- Colors -->
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@android:color/background_light</item>
         <item name="colorPrimary">@color/blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!--        <item name="colorPrimaryContainer">@color/primaryContainer</item>-->
@@ -23,8 +23,8 @@
         <!--        <item name="colorOnErrorContainer">@color/onErrorContainer</item>-->
         <!--        <item name="android:colorBackground">@color/background</item>-->
         <!--        <item name="colorOnBackground">@color/onBackground</item>-->
-        <!--        <item name="colorSurface">@color/surface</item>-->
-        <!--        <item name="colorOnSurface">@color/onSurface</item>-->
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
         <!--        <item name="colorSurfaceVariant">@color/surfaceVariant</item>-->
         <!--        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>-->
         <!--        <item name="colorSurfaceContainer">@color/surfaceContainer</item>-->
@@ -34,12 +34,22 @@
         <item name="android:textViewStyle">@style/LtechtestWidget.TextView</item>
         <item name="textInputStyle">@style/LtechtestWidget.TextInputLayout</item>
         <item name="materialButtonStyle">@style/LtechtestWidget.Button</item>
+        <item name="toolbarStyle">@style/LtechtestWidget.MaterialToolbar</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
 
         <!-- Params -->
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="elevationOverlayEnabled">false</item>
     </style>
 
     <style name="Base.Theme.Ltechtest" parent="Base.Theme.V24.Ltechtest" />
 
     <style name="Theme.Ltechtest" parent="Base.Theme.Ltechtest" />
+
+    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/LtechtestWidget.ModalBottomSheetDialog</item>
+    </style>
+
+    <style name="ThemeOverlay.SurfaceButton" parent="Base.Theme.V24.Ltechtest">
+        <item name="materialButtonStyle">@style/LtechtestWidget.SurfaceButton</item>
+    </style>
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_menu_update"
+        app:showAsAction="ifRoom"
+        android:contentDescription="@string/item_menu_description_update"
+        android:icon="@drawable/icon_refresh"
+        android:title="@string/item_menu_update" />
+</menu>

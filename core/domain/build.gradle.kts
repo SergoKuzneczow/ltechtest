@@ -36,6 +36,9 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":core:network"))
+    implementation(project(":core:database"))
+    implementation(project(":core:model"))
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
