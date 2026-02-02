@@ -38,8 +38,8 @@
     </style>
 
     <style name="LtechtestWidget.MaterialToolbar" parent="Widget.MaterialComponents.Toolbar.Surface">
-<!--        <item name="android:background">?attr/colorSurface</item>-->
-<!--        <item name="backgroundTint">?attr/colorSurface</item>-->
+        <!--        <item name="android:background">?attr/colorSurface</item>-->
+        <!--        <item name="backgroundTint">?attr/colorSurface</item>-->
         <item name="titleTextColor">?attr/colorOnSurface</item>
         <item name="subtitleTextColor">?attr/colorOnSurface</item>
         <item name="titleTextAppearance">@style/LtechtestTextAppearance.Headline3</item>
@@ -55,4 +55,24 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+
+    <style name="LtechtestWidget.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="itemTextColor">@color/selector_bottom_navigation_content_color</item>
+        <item name="itemIconTint">@color/selector_bottom_navigation_content_color</item>
+
+        <item name="itemBackground">@color/white</item>
+
+        <item name="itemTextAppearanceActive">@style/LtechtestTextAppearance.Caption</item>
+        <item name="itemTextAppearanceInactive">@style/LtechtestTextAppearance.Caption</item>
+
+    </style>
 </resources>
+
+<!--    app:backgroundTint="?attr/colorSurface"-->
+    <!--    app:itemTextColor="@color/selector_bottom_navigation_content_color"-->
+    <!--    app:itemIconTint="@color/selector_bottom_navigation_content_color"-->
+
+
+<!--    app:itemTextAppearanceActive="@style/LtechtestTextAppearance.Caption"-->
+<!--    app:itemTextAppearanceInactive="@style/LtechtestTextAppearance.Caption"-->

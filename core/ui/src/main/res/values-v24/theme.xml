@@ -37,6 +37,8 @@
         <item name="toolbarStyle">@style/LtechtestWidget.MaterialToolbar</item>
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
 
+        <item name="bottomNavigationStyle">@style/LtechtestWidget.BottomNavigationView</item>
+
         <!-- Params -->
         <item name="elevationOverlayEnabled">false</item>
     </style>

@@ -6,4 +6,7 @@
     <string name="modal_bottom_sheet_title">Сортировка</string>
     <string name="radio_sorting_default">По умолчанию</string>
     <string name="radio_sorting_date">По дате</string>
+    <string name="home_bottom_menu_item">Главная</string>
+    <string name="favorites_bottom_menu_item">Избранное</string>
+    <string name="user_bottom_menu_item">Аккаунт</string>
 </resources>
