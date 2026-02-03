@@ -11,8 +11,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import coil3.load
+import coil3.request.ImageRequest
 import coil3.request.crossfade
+import coil3.request.error
+import coil3.request.placeholder
+import coil3.request.target
 import com.sergokuzneczow.details.databinding.FragmentDetailsBinding
 import com.sergokuzneczow.navigator.NavigatorApi
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,9 +61,15 @@ internal class DetailsFragment : Fragment(R.layout.fragment_details) {
                     binding.tvPostDate.text = state.postDate
                     binding.tvPostTitle.text = state.postTitle
                     binding.tvPostContent.text = state.postContent
-                    binding.ivPostPreview.load(state.postImageUri) {
-                        crossfade(true)
-                    }
+
+                    val request = ImageRequest.Builder(requireContext())
+                        .data(state.postImageUri)
+                        .target(binding.ivPostPreview)
+                        .placeholder(com.sergokuzneczow.ui.R.drawable.icon_image_placeholder)
+                        .error(com.sergokuzneczow.ui.R.drawable.icon_image_placeholder)
+                        .crossfade(true)
+                        .build()
+                    vm.imageLoader.enqueue(request)
                 }
 
                 DetailsFragmentState.Error -> {}

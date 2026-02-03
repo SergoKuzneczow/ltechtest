@@ -50,4 +50,7 @@ dependencies {
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
+    //Coil
+    implementation(libs.coil)
+    implementation(libs.coil.network.okhttp)
 }

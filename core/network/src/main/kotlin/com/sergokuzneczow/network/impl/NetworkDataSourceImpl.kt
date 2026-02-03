@@ -1,9 +1,11 @@
 package com.sergokuzneczow.network.impl
 
+import coil3.ImageLoader
 import com.sergokuzneczow.model.AuthResponse
 import com.sergokuzneczow.model.PhoneMask
 import com.sergokuzneczow.model.Post
 import com.sergokuzneczow.network.api.NetworkDataSourceApi
+import com.sergokuzneczow.network.impl.coil.ImageLoaderProvider
 import com.sergokuzneczow.network.impl.models.AuthResponseRemoteModel
 import com.sergokuzneczow.network.impl.models.asListPosts
 import com.sergokuzneczow.network.impl.models.asPhoneMask
@@ -19,10 +21,14 @@ public class NetworkDataSourceImpl private constructor(
     private val phoneMaskApi: PhoneMaskApi,
     private val authResponseApi: AuthResponseApi,
     private val postsApi: PostsApi,
+    private val imageLoaderProvider: ImageLoaderProvider,
 ) : NetworkDataSourceApi {
 
     @Inject
-    internal constructor(retrofitHandler: RetrofitHandler) : this(retrofitHandler.phoneMaskApi, retrofitHandler.authResponseApi, retrofitHandler.postsApi)
+    internal constructor(
+        retrofitHandler: RetrofitHandler,
+        imageLoaderProvider: ImageLoaderProvider,
+    ) : this(retrofitHandler.phoneMaskApi, retrofitHandler.authResponseApi, retrofitHandler.postsApi, imageLoaderProvider)
 
     override suspend fun getPhoneMasks(): PhoneMask = phoneMaskApi.getPhoneMask().asPhoneMask
 
@@ -73,4 +79,6 @@ public class NetworkDataSourceImpl private constructor(
     }
 
     override suspend fun getPosts(): List<Post> = postsApi.getPosts().asListPosts
+
+    override fun imageLoader(): ImageLoader = imageLoaderProvider.imageLoader
 }

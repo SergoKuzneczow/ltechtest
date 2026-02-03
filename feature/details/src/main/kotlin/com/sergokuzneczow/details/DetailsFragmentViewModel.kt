@@ -3,9 +3,11 @@ package com.sergokuzneczow.details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import coil3.ImageLoader
 import com.sergokuzneczow.database.api.DatabaseDataSourceApi
 import com.sergokuzneczow.details.DetailsFragmentState.Success
 import com.sergokuzneczow.domain.phone_mask_converter_case.ConverterToTimePatterCaseApi
+import com.sergokuzneczow.network.api.NetworkDataSourceApi
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -22,9 +24,12 @@ internal class DetailsFragmentViewModel @AssistedInject constructor(
     @Assisted postKey: String,
     database: DatabaseDataSourceApi,
     converterToTimePatterCaseApi: ConverterToTimePatterCaseApi,
+    networkDataSourceApi: NetworkDataSourceApi,
 ) : ViewModel(), ContainerHost<DetailsFragmentState, DetailsFragmentAction> {
 
     override val container: Container<DetailsFragmentState, DetailsFragmentAction> = viewModelScope.container(DetailsFragmentState.Loading)
+
+    val imageLoader: ImageLoader = networkDataSourceApi.imageLoader()
 
     init {
         database.getPostsByKey(postKey).map {
