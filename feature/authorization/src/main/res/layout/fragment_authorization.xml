@@ -16,7 +16,34 @@
         android:visibility="visible" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/success_container"
+        android:id="@+id/container_reconnect"
+        style="@style/ThemeOverlay.SurfaceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Проблема с подключением"
+            android:textAppearance="@style/LtechtestTextAppearance.Headline2" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/padding_large" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_reconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Обновить" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container_success"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

@@ -10,6 +10,8 @@ internal sealed interface AuthorizationFragmentState {
         val passwordInputBody: String,
         val passwordErrorMessage: String? = null,
     ) : AuthorizationFragmentState
+
+    data object ConnectionProblem : AuthorizationFragmentState
 }
 
 internal sealed interface AuthorizationFragmentAction {
@@ -20,4 +22,6 @@ internal sealed interface AuthorizationFragmentIntent {
     data class ChangePhoneTextField(val field: String) : AuthorizationFragmentIntent
     data class ChangePasswordTextField(val field: String) : AuthorizationFragmentIntent
     data object TryAuthenticate : AuthorizationFragmentIntent
+    data object TryReconnect : AuthorizationFragmentIntent
+    data object ConnectionProblem : AuthorizationFragmentIntent
 }

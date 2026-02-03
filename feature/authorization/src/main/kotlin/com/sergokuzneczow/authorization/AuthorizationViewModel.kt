@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sergokuzneczow.authorization.AuthorizationFragmentIntent.ChangePasswordTextField
 import com.sergokuzneczow.authorization.AuthorizationFragmentIntent.ChangePhoneTextField
+import com.sergokuzneczow.authorization.AuthorizationFragmentIntent.ConnectionProblem
 import com.sergokuzneczow.authorization.AuthorizationFragmentIntent.TryAuthenticate
+import com.sergokuzneczow.authorization.AuthorizationFragmentIntent.TryReconnect
 import com.sergokuzneczow.database.api.DatabaseDataSourceApi
 import com.sergokuzneczow.domain.phone_mask_converter_case.CalculatePhoneMaskBodyCaseApi
 import com.sergokuzneczow.domain.phone_mask_converter_case.CalculatePhoneMaskPrefixCaseApi
@@ -17,13 +19,11 @@ import com.sergokuzneczow.network.api.NetworkDataSourceApi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.Container
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.annotation.OrbitExperimental
 import org.orbitmvi.orbit.container
-import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 internal class AuthorizationViewModel @Inject constructor(
@@ -96,13 +96,21 @@ internal class AuthorizationViewModel @Inject constructor(
                 }
 
             }
+
+            TryReconnect -> intent {
+                reduce { AuthorizationFragmentState.Loading }
+                viewModelScope.launch(Dispatchers.IO) { getPhoneMask() }
+            }
+
+            ConnectionProblem -> intent {
+                reduce { AuthorizationFragmentState.ConnectionProblem }
+            }
         }
     }
 
     private suspend fun getPhoneMask() {
         runCatching {
             val mask = networkDataSourceApi.getPhoneMasks().phoneMask
-            println(mask)
             mask
         }.onSuccess { mask ->
             val savedAuthenticateRequest: AuthenticateRequest? = databaseDataSourceApi.getAuthenticateRequest(mask)
@@ -132,8 +140,7 @@ internal class AuthorizationViewModel @Inject constructor(
                 }
             }
         }.onFailure {
-            delay(1.seconds)
-            getPhoneMask()
+            dispatch(ConnectionProblem)
         }
     }
 }
