@@ -13,6 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
-core/network/src/main/kotlin/com/sergokuzneczow/network/impl/retrofit/RetrofitSettings.kt
 app/release
 /.kotlin
