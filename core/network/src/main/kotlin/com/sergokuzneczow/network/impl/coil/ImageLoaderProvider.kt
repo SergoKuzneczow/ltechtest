@@ -9,11 +9,14 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 
 @Singleton
 internal class ImageLoaderProvider @Inject constructor(@ApplicationContext context: Context) {
 
-    private val okHttpClient = OkHttpClient()
+    private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.NONE })
+        .build()
 
     val imageLoader: ImageLoader = ImageLoader.Builder(context)
         .diskCache {
